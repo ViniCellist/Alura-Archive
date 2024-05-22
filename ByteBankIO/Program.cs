@@ -4,12 +4,24 @@ class Program
 {
     static void Main(string[] args)
     {
-        var conta = ContaCorrente(524, 4518);
+        var enderecoDoArquivo = "contas.txt";
+        var fluxoDoArquivo = new FileStream(enderecoDoArquivo, FileMode.Open);
+
+        var buffer = new byte[1024];
+        fluxoDoArquivo.Read(buffer, 0, 1024);
+
+        EscreverBuffer(buffer);
+
         Console.ReadLine();
     }
 
-    private static object ContaCorrente(int v1, int v2)
+    static void EscreverBuffer(byte[] buffer)
     {
-        throw new NotImplementedException();
+        foreach(var meuByte in buffer)
+        {
+            Console.Write(meuByte);
+            Console.Write(" ");
+        }
     }
+
 }
