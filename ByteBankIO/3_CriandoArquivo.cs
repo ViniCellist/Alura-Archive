@@ -30,4 +30,22 @@ partial class Program
         }
     }
 
+    static void TestaEscrita()
+    {
+        var caminhoNovoArquivo = "teste.txt";
+
+        using(var fluxoDeArquivo = new FileStream(caminhoNovoArquivo, FileMode.Create))
+        using(var escritor = new StreamWriter(fluxoDeArquivo))
+        {
+            for(int i = 0; i < 10000000; i++)
+            {
+                escritor.WriteLine($"Linha {i}");
+                escritor.Flush();
+                Console.WriteLine("Linha {i} fo escrita no arquivo. Tecle enter...");
+                Console.ReadLine();
+            }
+            
+        }
+    }
+
 }
